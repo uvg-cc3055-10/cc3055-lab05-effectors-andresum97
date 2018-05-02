@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class Character : MonoBehaviour {
 
@@ -41,4 +43,12 @@ public class Character : MonoBehaviour {
             rb2d.AddForce(Vector2.up*jumpForce);
         }
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Puerta"))
+            SceneManager.LoadScene("Dungeon2");
+        if(collision.CompareTag("Puerta2"))
+            SceneManager.LoadScene("Dungeon3");
+    }
 }
